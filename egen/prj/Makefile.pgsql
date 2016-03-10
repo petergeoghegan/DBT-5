@@ -138,7 +138,7 @@ EGenLoader:			EGenUtilities \
 				EGenGenerateAndLoadObj \
 				$(EGenLoader_obj)
 	cd $(OBJ); \
-	$(CXX) 	$(LDFLAGS) \
+	$(CXX) \
 				$(EGenUtilities_obj) \
 				$(EGenDriverMEELib_obj) \
 				$(EGenLogger_obj) \
@@ -147,17 +147,19 @@ EGenLoader:			EGenUtilities \
 				$(EGenGenerateAndLoad_obj) \
 				$(EGenLoader_obj) \
 				$(LIBS) \
-				-o $(EXE)/$@; \
+                                $(LDFLAGS) \
+                                -o $(EXE)/$@; \
 	cd $(PRJ); \
 	ls -l $(EXE)
 
 EGenValidate:			EGenDriverLib \
 				$(EGenValidate_obj)
 	cd $(OBJ); \
-	$(CXX)  $(LDFLAGS) \
+	$(CXX) \
 				$(EGenValidate_obj) \
 				$(LIB)/$(EGenDriverLib_lib) \
 				$(LIBS) \
+                                $(LDFLAGS) \
 				-o $(EXE)/$@; \
 	cd $(PRJ); \
 	ls -al $(EXE)
