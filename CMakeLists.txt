@@ -44,7 +44,7 @@ IF (DBMS STREQUAL "pgsql")
         EXECUTE_PROCESS(COMMAND ${PG_CONFIG} --libdir OUTPUT_VARIABLE
                 PG_LIBDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-        SET(DBCFLAGS "-DLIBPQ -I${PG_INCLUDEDIR}")
+	SET(DBCFLAGS "-DLIBPQ -I${PG_INCLUDEDIR} -I /usr/include/")
 
         SET(DB_LIBS "-L${PG_LIBDIR} -lpq")
 
@@ -205,7 +205,7 @@ ADD_EXECUTABLE(${DBT5_TEST_TXN}
 # Set compiler flags.
 #
 
-SET(CMAKE_CXX_FLAGS "-g -Wall -I${EGENINC} -Isrc/include ${LFS_CFLAGS}")
+SET(CMAKE_CXX_FLAGS "-g -Wall -I${EGENINC} -Isrc/include ${LFS_CFLAGS} -include /usr/include/unistd.h")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__STDC_FORMAT_MACROS")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__STDC_CONSTANT_MACROS")
 # FIXME: How to set this for just ${TXN}/${DBMS}/DBConnection.cpp?
