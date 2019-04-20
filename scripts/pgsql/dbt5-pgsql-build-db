@@ -147,4 +147,4 @@ psql ${PORTARG} -e ${DBNAMEARG} -c "SELECT setseed(0);" || exit 1
 # heap and update the commit-hint bits on each new tuple, but a regular
 # VACUUM ought to suffice for that.
 #
-vacuumdb ${PORTARG} -z -f ${DBNAMEARG} || exit 1
+vacuumdb ${PORTARG} -z ${DBNAMEARG} || exit 1
